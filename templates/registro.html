@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2>Bienvenido</h2>
+            <p>Te tomara unos minutos crear una cuenta</p>
+            <form id="registerForm" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    {{ form.pass1.label_tag }}
+                    {{ form.pass1|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    {{ form.pass2.label_tag }}
+                    {{ form.pass2|add_class:"form-control" }}
+                </div>
+                <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+            </form>
+            <p>Tienes una cuenta? <a href="{% url 'login' %}">Iniciar Sesi\'on</a></p>
+        </div>
+    </div>
+</div>    
+{% endblock %}
